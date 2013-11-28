@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131128083311) do
+ActiveRecord::Schema.define(:version => 20131128124759) do
 
   create_table "posts", :force => true do |t|
     t.string   "content"
@@ -29,8 +29,13 @@ ActiveRecord::Schema.define(:version => 20131128083311) do
     t.integer  "school_id"
     t.integer  "role"
     t.string   "avatar"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "encrypted_password"
+    t.string   "salt"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["profile_name"], :name => "index_users_on_profile_name", :unique => true
 
 end
